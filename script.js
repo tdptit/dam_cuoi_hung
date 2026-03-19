@@ -4,16 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── NAVBAR SCROLL ──────────────────────────
-  const nav = document.querySelector('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
-  window.addEventListener('scroll', onScroll, { passive: true });
 
-  // ── MOBILE NAV TOGGLE ──────────────────────
-  const toggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
   // ── PARALLAX HERO ──────────────────────────
   const heroBg = document.querySelector('.hero-bg');
