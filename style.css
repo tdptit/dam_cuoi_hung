@@ -439,18 +439,23 @@ nav.scrolled .nav-toggle span { background: var(--text); }
   margin: 0 auto 3rem;
 }
 .gallery-grid-featured {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   max-width: 960px;
-  margin: 0 auto 12px;
+  margin: 0 auto 32px;
 }
-.gallery-grid-featured .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-.gallery-grid-featured .gallery-item:nth-child(2) { grid-column: span 1; grid-row: span 2; }
-.gallery-grid-featured .gallery-item:nth-child(3) { grid-column: span 2; grid-row: span 1; }
+.gallery-grid-featured .gallery-item {
+  flex: 1 1 250px;
+  max-width: 300px;
+}
 .gallery-grid-featured .gallery-item img {
   aspect-ratio: auto;
-  min-height: 250px;
+  height: auto;
+  min-height: auto;
+  object-fit: contain;
 }
 
 .gallery-grid {
@@ -698,7 +703,7 @@ footer {
   gap: 12px;
   max-height: 85vh;
   padding: 40px 4px; /* More padding for fade effect */
-  pointer-events: auto;
+  pointer-events: none;
   mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
   overflow: hidden; /* Hide scrollbar completely, we use transform now */
@@ -735,6 +740,7 @@ footer {
   cursor: default;
   flex-shrink: 0;
   position: relative;
+  pointer-events: auto;
   /* Bobbing animation is separate to not conflict with scroll transform */
 }
 
@@ -850,6 +856,7 @@ footer {
   text-align: center;
   padding: 1rem 0.5rem;
   gap: 0.4rem;
+  pointer-events: auto;
 }
 .wishes-empty-icon { font-size: 1.6rem; }
 .wishes-empty p {
@@ -871,7 +878,50 @@ footer {
 
 
 @media (max-width: 900px) {
-  .wishes-ticker { display: none; }
+  .wishes-ticker {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 140px;
+    transform: none;
+    flex-direction: row;
+    background: rgba(250, 246, 240, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--gold);
+    padding: 10px 0;
+    margin-bottom: 0px; /* Attach firmly to bottom */
+  }
+  .wishes-ticker.ticker-empty {
+    max-height: 100px; /* Smaller when empty */
+  }
+  .wishes-ticker-inner {
+    flex-direction: row;
+    max-height: none;
+    padding: 0 10px;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .wishes-scroll-container {
+    flex-direction: row;
+    animation: tickerScrollMobile 30s linear infinite;
+  }
+  .wish-bubble {
+    width: 260px;
+    flex-shrink: 0;
+    animation: wishBobMobile 5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes tickerScrollMobile {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+@keyframes wishBobMobile {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-2px); }
 }
 
 /* — RESPONSIVE — */
