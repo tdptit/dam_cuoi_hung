@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const secs = Math.floor((diff % 60000) / 1000);
 
     document.getElementById('days').textContent = pad(days);
+    const daysLarge = document.getElementById('days-large');
+    if (daysLarge) daysLarge.textContent = pad(days);
     document.getElementById('hours').textContent = pad(hours);
     document.getElementById('mins').textContent = pad(mins);
     document.getElementById('secs').textContent = pad(secs);
@@ -338,5 +340,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // ── AUDIO AUTOPLAY ──────────────────────────
+  const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+  audio.loop = true;
+
+  const startMusic = () => {
+    audio.play().catch(e => console.log("Autoplay blocked:", e));
+    // Remove listeners once music starts
+    ['click', 'scroll', 'touchstart'].forEach(type => 
+      document.removeEventListener(type, startMusic)
+    );
+  };
+
+  ['click', 'scroll', 'touchstart'].forEach(type => 
+    document.addEventListener(type, startMusic, { once: true })
+  );
 
 });

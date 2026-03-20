@@ -31,161 +31,161 @@
        HERO SECTION
   ═══════════════════════════════ -->
   <section id="hero" aria-label="Hero">
-    <div class="hero-marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <img src="image/0P6A9490.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/0P6A9492.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/Anh Phong/0P6A9542.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/0P6A9689.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/Anh Phong/0P6A9748.webp" alt="" loading="lazy" decoding="async" />
-        <!-- Duplicate set for seamless looping -->
-        <img src="image/0P6A9490.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/0P6A9492.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/Anh Phong/0P6A9542.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/0P6A9689.webp" alt="" loading="lazy" decoding="async" />
-        <img src="image/Anh Phong/0P6A9748.webp" alt="" loading="lazy" decoding="async" />
+    <!-- Ken Burns Slider Background -->
+    <div class="hero-slider-fullscreen" aria-hidden="true">
+      <!-- Slide 1 -->
+      <div class="slide">
+        <div class="slide-blur-bg" style="background-image: url('image/0P6A9655.webp');"></div>
+        <div class="slide-main-img" style="background-image: url('image/0P6A9655.webp');"></div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-blur-bg" style="background-image: url('image/0P6A9731.webp');"></div>
+        <div class="slide-main-img" style="background-image: url('image/0P6A9731.webp');"></div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-blur-bg" style="background-image: url('image/0P6A9638.webp');"></div>
+        <div class="slide-main-img" style="background-image: url('image/0P6A9638.webp');"></div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="slide">
+        <div class="slide-blur-bg" style="background-image: url('image/0P6A9709.webp');"></div>
+        <div class="slide-main-img" style="background-image: url('image/0P6A9709.webp');"></div>
+      </div>
+      <!-- Slide 5 -->
+      <div class="slide">
+        <div class="slide-blur-bg" style="background-image: url('image/0P6A9542.webp');"></div>
+        <div class="slide-main-img" style="background-image: url('image/0P6A9542.webp');"></div>
+      </div>
+      <!-- Slide 6 -->
+      <div class="slide">
+        <div class="slide-blur-bg" style="background-image: url('image/0P6A9683.webp');"></div>
+        <div class="slide-main-img" style="background-image: url('image/0P6A9683.webp');"></div>
       </div>
     </div>
-    <div class="hero-overlay"></div>
+    
+    <div class="hero-overlay-gradient-fullscreen"></div>
 
-    <div class="hero-content">
-      <span class="hero-eyebrow">Trân trọng kính mời</span>
+    <div class="hero-content-fullscreen">
+      <div class="hero-names-heart-frame">
+        <h1 class="bride-name">Quang Hưng</h1>
+        <div class="name-separator">❤️</div>
+        <h1 class="groom-name">Đại Nguyên</h1>
+      </div>
 
-      <h1 class="hero-names">
-        Quang Hưng
-        <span class="hero-and">&amp;</span>
-        Đại Nguyên
-      </h1>
-
-      <div class="hero-divider"></div>
-      <p class="hero-date">06 · 04 · 2026</p>
-
-      <div class="countdown" id="countdown">
-        <div class="countdown-item">
-          <span class="countdown-num" id="days">00</span>
-          <span class="countdown-label">Ngày</span>
+      <div class="hero-heart-container">
+        <div class="heart-icon-main">
+          <span class="heart-white">🤍</span>
+          <span class="heart-red">❤️</span>
         </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item">
-          <span class="countdown-num" id="hours">00</span>
-          <span class="countdown-label">Giờ</span>
+      </div>
+
+      <div class="hero-date-row">
+        <span class="date-label">THỨ HAI</span>
+        <span class="date-main">06/04</span>
+        <span class="date-label">NĂM 2026</span>
+      </div>
+
+      <p class="hero-days-remaining">Chỉ còn <span id="days-large">00</span> ngày nữa</p>
+
+      <div class="countdown-circles" id="countdown">
+        <div class="countdown-circle-item">
+          <div class="circle-box">
+            <span class="countdown-num" id="days">00</span>
+            <span class="countdown-label">Ngày</span>
+          </div>
         </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item">
-          <span class="countdown-num" id="mins">00</span>
-          <span class="countdown-label">Phút</span>
+        <div class="countdown-circle-item">
+          <div class="circle-box">
+            <span class="countdown-num" id="hours">00</span>
+            <span class="countdown-label">Giờ</span>
+          </div>
         </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item">
-          <span class="countdown-num" id="secs">00</span>
-          <span class="countdown-label">Giây</span>
+        <div class="countdown-circle-item">
+          <div class="circle-box">
+            <span class="countdown-num" id="mins">00</span>
+            <span class="countdown-label">Phút</span>
+          </div>
+        </div>
+        <div class="countdown-circle-item">
+          <div class="circle-box">
+            <span class="countdown-num" id="secs">00</span>
+            <span class="countdown-label">Giây</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <a href="#story" class="hero-scroll-hint" aria-label="Cuộn xuống">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </a>
+    </div>
+
   </section>
 
   <!-- ═══════════════════════════════
        OUR STORY
   ═══════════════════════════════ -->
-  <section id="story" class="section" aria-label="Câu chuyện tình yêu">
-    <div class="section-inner">
-      <span class="section-label reveal">Hành trình của chúng tôi</span>
-      <h2 class="section-title reveal">Câu Chuyện Tình Yêu</h2>
-      <div class="section-divider reveal">
-        <div class="diamond"></div>
-      </div>
-      <p class="story-intro reveal">
-        Mỗi tình yêu đều có khởi đầu riêng của nó — của chúng tôi bắt đầu bằng một cuộc gặp gỡ tình cờ và đơn giản,
-        nhưng đã thay đổi cả cuộc đời.
-      </p>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="content">
-            <span class="timeline-year">2021</span>
-            <h3>Lần Đầu Gặp Gỡ</h3>
-            <p>Một buổi chiều mùa thu, trong một quán cà phê nhỏ ở góc phố, chúng tôi tình cờ ngồi cạnh nhau và bắt đầu
-              một cuộc trò chuyện không có hồi kết.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="content">
-            <span class="timeline-year">2022</span>
-            <h3>Chính Thức Hẹn Hò</h3>
-            <p>Sau nhiều buổi đi chơi cùng nhau, dưới ánh đèn lồng rực rỡ của lễ hội đêm, Quang Hưng đã cầm tay Đại
-              Nguyên và hỏi một câu giản dị mà đong đầy yêu thương.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="content">
-            <span class="timeline-year">2024</span>
-            <h3>Cầu Hôn</h3>
-            <p>Tại Đà Lạt, giữa cánh đồng hoa mimosa vàng rực, Quang Hưng quỳ xuống với nhẫn kim cương và lời hỏi cưới
-              khiến Đại Nguyên rơi nước mắt hạnh phúc.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="content">
-            <span class="timeline-year">2026</span>
-            <h3>Kết Hôn</h3>
-            <p>Và hôm nay, trước sự chứng kiến của gia đình và bạn bè thân yêu, chúng tôi nguyện yêu thương nhau mãi mãi
-              về sau.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════════════
-       EVENT DETAILS
+       INVITATION CARD
   ═══════════════════════════════ -->
-  <section id="details" class="section" aria-label="Thông tin sự kiện">
+  <section id="invitation" class="section" aria-label="Lời mời">
     <div class="section-inner">
-      <span class="section-label reveal">Chúng tôi trân trọng</span>
-      <h2 class="section-title reveal">Thông Tin Sự Kiện</h2>
-      <div class="section-divider reveal">
-        <div class="diamond"></div>
+      <div class="invitation-top-header reveal">
+        <h2 class="invitation-main-title">Trân trọng mời bạn</h2>
+        <p class="invitation-sub-title">TỚI DỰ BỮA CƠM THÂN MẬT CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI</p>
       </div>
 
-      <div class="details-grid">
+      <div class="invitation-cards-wrapper">
+        <!-- NHÀ TRAI -->
+        <div class="invitation-card groom-card reveal">
+          <div class="invitation-image-container">
+            <div class="photo-shield">
+                <img src="image/0P6A9655.webp" alt="Ảnh lễ cưới Nhà Trai" loading="lazy" />
+            </div>
+          </div>
 
-        <div class="detail-card">
-          <div class="detail-icon">💒</div>
-          <h3>Lễ Vu Quy</h3>
-          <p><strong>Thứ Hai, 06 tháng 04 năm 2026</strong></p>
-          <p>⏰ 7:00 sáng — Lễ Gia Tiên</p>
-          <p>⏰ 9:00 sáng — Lễ Đón Dâu</p>
-          <p>📍 Nhà gái: 12 Nguyễn Trãi, Quận 1, TP.HCM</p>
-          <a href="https://maps.google.com" target="_blank" class="btn-map">Xem bản đồ</a>
+          <div class="invitation-bottom">
+            <h3 class="invitation-side">NHÀ TRAI</h3>
+            <p class="invitation-address">Trung tâm Hội nghị Tiệc cưới Adora, 431 Hoàng Văn Thụ, Tân Bình, TP. HCM</p>
+            <a href="https://maps.app.goo.gl/9uK2pX5e8R4X7jF29" target="_blank" class="btn-map">
+              <i class="fas fa-map-marker-alt"></i> Xem Bản Đồ
+            </a>
+            <div class="invitation-time">Vào lúc 16:00</div>
+            
+            <div class="invitation-date-display">
+              <div class="invitation-date-label">Thứ Hai</div>
+              <div class="invitation-date-number">06/04</div>
+              <div class="invitation-date-label">Năm 2026</div>
+            </div>
+
+            <p class="invitation-lunar-date">Tức ngày 19 tháng 02 năm Bính Ngọ</p>
+          </div>
         </div>
 
-        <div class="detail-card">
-          <div class="detail-icon">🥂</div>
-          <h3>Tiệc Cưới</h3>
-          <p><strong>Thứ Hai, 06 tháng 04 năm 2026</strong></p>
-          <p>⏰ 11:00 sáng — Khai tiệc</p>
-          <p>📍 Trung tâm hội nghị Grand Palace</p>
-          <p>🏢 45 Lê Thánh Tôn, Quận 1, TP.HCM</p>
-          <a href="https://maps.google.com" target="_blank" class="btn-map">Xem bản đồ</a>
+        <!-- NHÀ GÁI -->
+        <div class="invitation-card bride-card reveal">
+          <div class="invitation-image-container">
+            <div class="photo-shield">
+                <img src="image/0P6A9690.webp" alt="Ảnh lễ cưới Nhà Gái" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="invitation-bottom">
+            <h3 class="invitation-side">NHÀ GÁI</h3>
+            <p class="invitation-address">Số 12 Nguyễn Trãi, Phường Bến Thành, Quận 1, TP. HCM</p>
+            <a href="https://maps.app.goo.gl/uX3L5q6J7v8M9N0P1" target="_blank" class="btn-map">
+              <i class="fas fa-map-marker-alt"></i> Xem Bản Đồ
+            </a>
+            <div class="invitation-time">Vào lúc 09:00</div>
+            
+            <div class="invitation-date-display">
+              <div class="invitation-date-label">Thứ Hai</div>
+              <div class="invitation-date-number">06/04</div>
+              <div class="invitation-date-label">Năm 2026</div>
+            </div>
+
+            <p class="invitation-lunar-date">Tức ngày 19 tháng 02 năm Bính Ngọ</p>
+          </div>
         </div>
-
-        <!-- Dress Code section removed as requested -->
-
       </div>
     </div>
   </section>
@@ -200,51 +200,48 @@
       <div class="section-divider reveal">
         <div class="diamond"></div>
       </div>
-      <p class="gallery-subtitle reveal">
-        Mỗi bức ảnh là một mảnh ghép trong câu chuyện tình yêu của chúng tôi.
-      </p>
 
       <div class="gallery-grid-featured">
-        <div class="gallery-item"><img src="image/0P6A9490.webp" alt="Ảnh nổi bật 1" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9731.webp" alt="Ảnh nổi bật 1" loading="lazy" />
           <div class="gallery-overlay"><span>Duyên Dáng</span></div>
         </div>
-        <div class="gallery-item"><img src="image/0P6A9689.webp" alt="Ảnh nổi bật 2" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9542.webp" alt="Ảnh nổi bật 2" loading="lazy" />
           <div class="gallery-overlay"><span>Rạng Rỡ</span></div>
         </div>
-        <div class="gallery-item"><img src="image/0P6A9492.webp" alt="Ảnh nổi bật 3" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9645.webp" alt="Ảnh nổi bật 3" loading="lazy" />
           <div class="gallery-overlay"><span>Cùng Nhau</span></div>
         </div>
       </div>
 
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9290.webp" alt="Ảnh cưới 1" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9290.webp" alt="Ảnh cưới 1" loading="lazy" />
           <div class="gallery-overlay"><span>Kỷ Niệm</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9306.webp" alt="Ảnh cưới 2" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9306.webp" alt="Ảnh cưới 2" loading="lazy" />
           <div class="gallery-overlay"><span>Nụ Cười</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9550.webp" alt="Ảnh cưới 3" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9675.webp" alt="Ảnh cưới 3" loading="lazy" />
           <div class="gallery-overlay"><span>Khoảnh Khắc</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9590.webp" alt="Ảnh cưới 4" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9709.webp" alt="Ảnh cưới 4" loading="lazy" />
           <div class="gallery-overlay"><span>Yêu Thương</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9645.webp" alt="Ảnh cưới 5" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9748.webp" alt="Ảnh cưới 5" loading="lazy" />
           <div class="gallery-overlay"><span>Hạnh Phúc</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9675.webp" alt="Ảnh cưới 6" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9550.webp" alt="Ảnh cưới 6" loading="lazy" />
           <div class="gallery-overlay"><span>Dịu Dàng</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9709.webp" alt="Ảnh cưới 7" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9590.webp" alt="Ảnh cưới 7" loading="lazy" />
           <div class="gallery-overlay"><span>Ấm Áp</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9731.webp" alt="Ảnh cưới 8" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9638.webp" alt="Ảnh cưới 8" loading="lazy" />
           <div class="gallery-overlay"><span>Bên Nhau</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9748.webp" alt="Ảnh cưới 9" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9665.webp" alt="Ảnh cưới 9" loading="lazy" />
           <div class="gallery-overlay"><span>Ánh Mắt</span></div>
         </div>
-        <div class="gallery-item"><img src="image/Anh Treo/0P6A9782 x2.webp" alt="Ảnh cưới 10" loading="lazy" />
+        <div class="gallery-item"><img src="image/0P6A9689.webp" alt="Ảnh cưới 10" loading="lazy" />
           <div class="gallery-overlay"><span>Trọn Vẹn</span></div>
         </div>
       </div>
@@ -317,7 +314,9 @@
        FOOTER
   ═══════════════════════════════ -->
   <footer>
-    <span class="footer-names">Quang Hưng &amp; Đại Nguyên</span>
+    <h2 class="footer-thanks reveal">Thank you!</h2>
+    <p class="footer-thanks-msg reveal">Sự hiện diện của bạn sẽ khiến hôn lễ của chúng tôi trở nên ý nghĩa hơn bao giờ hết!</p>
+    <span class="footer-names reveal">Quang Hưng &amp; Đại Nguyên</span>
     <p class="footer-date">06 · 04 · 2026</p>
     <div class="footer-divider"></div>
     <p class="footer-message">
@@ -325,7 +324,6 @@
       <br /><em>— Antoine de Saint-Exupéry</em>
     </p>
     <div class="footer-divider"></div>
-    <p class="footer-copy">Made with ❤️ for our special day</p>
   </footer>
 
   <!-- ═══════════════════════════════
