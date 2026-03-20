@@ -158,9 +158,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─ RENDER WISHES
   async function renderWishes() {
-    tickerInner.innerHTML = '';
-    const wishes = await fetchWishes();
+    // 1. Loading from local cache immediately for 'Instant' feel
+    const localWishes = getStoredWishes();
+    if (localWishes.length > 0) {
+      displayWishes(localWishes);
+    }
 
+    // 2. Fetch fresh data from API in background
+    try {
+      const wishes = await fetchWishes();
+      if (wishes && wishes.length > 0) {
+        displayWishes(wishes);
+      } else if (localWishes.length === 0) {
+        emptyState.style.display = 'flex';
+        ticker.classList.add('ticker-empty');
+      }
+    } catch (err) {
+      console.warn("Background fetch failed.");
+    }
+  }
+
+  function displayWishes(wishes) {
+    tickerInner.innerHTML = '';
+    
     if (wishes.length === 0) {
       emptyState.style.display = 'flex';
       ticker.classList.add('ticker-empty');
@@ -184,14 +204,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         el.innerHTML = `
           <span class="wish-name">${wish.name}</span>
-          <p class="wish-text">${wish.text}</p>
+          <p class="wish-text">${wish.message || wish.text || ''}</p>
           <div class="wish-heart" data-id="${wish.id}">
             <span class="wish-heart-btn">❤️</span>
             <span class="wish-heart-count">${wish.likes || 0}</span>
           </div>
         `;
 
-        // Handle Like Click
         const heartZone = el.querySelector('.wish-heart');
         heartZone.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -247,10 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─ Add new wish
   function addNewWishToTicker(wish) {
-    // Quick flash/priority render
     renderWishes(); 
-    // To make it "pop", we could manually insert a glowing one at the top,
-    // but re-rendering is safer for the seamless loop logic.
   }
 
 
@@ -261,26 +277,20 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const btn = form.querySelector('.btn-submit');
 
-    // Thu thập tất cả dữ liệu từ form
     const nameInput = document.getElementById('name');
     const nameGroup = nameInput.closest('.form-group');
     const name = nameInput.value.trim();
 
-    // Clear previous error
     nameGroup.classList.remove('has-error');
 
     if (!name) {
       nameGroup.classList.add('has-error');
       nameInput.focus();
-      
-      // Auto-remove error when typing
       nameInput.addEventListener('input', () => {
         nameGroup.classList.remove('has-error');
       }, { once: true });
-      
       return;
     }
-
 
     const formData = {
       name: name,
@@ -289,7 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
       message: document.getElementById('message').value
     };
 
-
     btn.textContent = '✓ Đang gửi...';
     btn.disabled = true;
 
@@ -297,12 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
       form.style.display = 'none';
       successMsg.style.display = 'block';
 
-      // Nếu có để lại lời chúc thì mới hiện lên ticker
       if (formData.message) {
-        saveWish(formData); // Lưu toàn bộ dữ liệu (name, message, v.v...)
+        saveWish(formData);
         addNewWishToTicker({ name: formData.name, text: formData.message });
       } else {
-        // Nếu không có lời chúc, vẫn gửi RSVP lên server
         saveWish(formData);
       }
     }, 1200);
@@ -341,13 +348,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── AUDIO AUTOPLAY ──────────────────────────
-  const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+  // ── AUDIO & MUSIC CONTROL ──────────────────
+  const audio = new Audio('https://biwed.com/wp-content/uploads/2021/07/Beautiful-In-White-Shane-Filan.mp3');
   audio.loop = true;
 
+  const musicControl = document.getElementById('music-control');
+  let isPlaying = false;
+
+  const toggleMusic = () => {
+    if (isPlaying) {
+      audio.pause();
+      musicControl.classList.remove('playing');
+    } else {
+      audio.play().catch(e => console.log("Autoplay blocked:", e));
+      musicControl.classList.add('playing');
+    }
+    isPlaying = !isPlaying;
+  };
+
+  musicControl.addEventListener('click', toggleMusic);
+
   const startMusic = () => {
-    audio.play().catch(e => console.log("Autoplay blocked:", e));
-    // Remove listeners once music starts
+    if (!isPlaying) {
+      audio.play().then(() => {
+        isPlaying = true;
+        musicControl.classList.add('playing');
+      }).catch(e => console.log("Autoplay blocked:", e));
+    }
     ['click', 'scroll', 'touchstart'].forEach(type => 
       document.removeEventListener(type, startMusic)
     );
