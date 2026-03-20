@@ -349,8 +349,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── AUDIO & MUSIC CONTROL ──────────────────
-  const audio = new Audio('https://biwed.com/wp-content/uploads/2021/07/Beautiful-In-White-Shane-Filan.mp3');
+  const primaryMusic = 'https://biwed.com/wp-content/uploads/2021/07/Beautiful-In-White-Shane-Filan.mp3';
+  const fallbackMusic = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'; // Piano wedding-like fallback
+  
+  const audio = new Audio(primaryMusic);
   audio.loop = true;
+
+  // Fallback logic if primary link is broken/blocked
+  audio.addEventListener('error', () => {
+    console.warn("Primary music failed, switching to fallback.");
+    if (audio.src !== fallbackMusic) {
+      audio.src = fallbackMusic;
+      if (isPlaying) audio.play();
+    }
+  });
 
   const musicControl = document.getElementById('music-control');
   let isPlaying = false;
@@ -360,28 +372,45 @@ document.addEventListener('DOMContentLoaded', () => {
       audio.pause();
       musicControl.classList.remove('playing');
     } else {
-      audio.play().catch(e => console.log("Autoplay blocked:", e));
-      musicControl.classList.add('playing');
+      audio.play().then(() => {
+        musicControl.classList.add('playing');
+      }).catch(e => {
+        console.log("Play blocked/failed:", e);
+        // Try fallback immediately if primary play fails (could be CORS)
+        if (audio.src !== fallbackMusic) {
+          audio.src = fallbackMusic;
+          audio.play().then(() => musicControl.classList.add('playing'));
+        }
+      });
     }
     isPlaying = !isPlaying;
   };
 
-  musicControl.addEventListener('click', toggleMusic);
+  musicControl.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMusic();
+  });
 
   const startMusic = () => {
     if (!isPlaying) {
       audio.play().then(() => {
         isPlaying = true;
         musicControl.classList.add('playing');
-      }).catch(e => console.log("Autoplay blocked:", e));
+        console.log("Music started via guest interaction");
+      }).catch(e => {
+        console.log("Autoplay still blocked, waiting for more interaction.");
+      });
     }
-    ['click', 'scroll', 'touchstart'].forEach(type => 
-      document.removeEventListener(type, startMusic)
-    );
+    // We keep listening until it actually plays successfully
+    if (isPlaying) {
+      ['click', 'scroll', 'touchstart'].forEach(type => 
+        document.removeEventListener(type, startMusic)
+      );
+    }
   };
 
   ['click', 'scroll', 'touchstart'].forEach(type => 
-    document.addEventListener(type, startMusic, { once: true })
+    document.addEventListener(type, startMusic, { once: false }) // Keep until success
   );
 
 });
