@@ -349,16 +349,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── AUDIO & MUSIC CONTROL ──────────────────
-  const primaryMusic = 'https://biwed.com/wp-content/uploads/2021/07/Beautiful-In-White-Shane-Filan.mp3';
-  const fallbackMusic = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'; // Piano wedding-like fallback
+  // Ưu tiên 1: File chuẩn bạn vừa thêm vào thư mục assets
+  const primaryMusic = './assets/Beautiful%20In%20White.mp3'; 
+  const externalMusic = 'https://archive.org/download/ShaneFilanBeautifulInWhite/Shane%20Filan%20-%20Beautiful%20In%20White.mp3';
+  const fallbackMusic = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'; 
   
   const audio = new Audio(primaryMusic);
   audio.loop = true;
 
-  // Fallback logic if primary link is broken/blocked
+  // Tự động chuyển link nếu link hiện tại lỗi
   audio.addEventListener('error', () => {
-    console.warn("Primary music failed, switching to fallback.");
-    if (audio.src !== fallbackMusic) {
+    if (audio.src.includes('Beautiful%20In%20White.mp3')) {
+      console.log("Không tìm thấy file trong assets, chuyển sang link Archive.org...");
+      audio.src = externalMusic;
+      if (isPlaying) audio.play();
+    } else if (audio.src === externalMusic) {
+      console.warn("Link Archive.org gặp sự cố, dùng nhạc Piano dự phòng.");
       audio.src = fallbackMusic;
       if (isPlaying) audio.play();
     }
