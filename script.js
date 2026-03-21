@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ── COUNTDOWN TIMER ────────────────────────
-  const weddingDate = new Date('2026-04-06T10:00:00');
+  const weddingDate = new Date('2026-04-05T15:00:00');
   const pad = n => String(n).padStart(2, '0');
 
   function updateCountdown() {
