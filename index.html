@@ -15,6 +15,9 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap"
     rel="stylesheet" />
 
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -64,7 +67,7 @@
         <div class="slide-main-img" style="background-image: url('image/0P6A9683.webp');"></div>
       </div>
     </div>
-    
+
     <div class="hero-overlay-gradient-fullscreen"></div>
 
     <div class="hero-content-fullscreen">
@@ -139,7 +142,7 @@
         <div class="invitation-card groom-card reveal">
           <div class="invitation-image-container">
             <div class="photo-shield">
-                <img src="image/0P6A9655.webp" alt="Ảnh lễ cưới Nhà Trai" loading="lazy" />
+              <img src="image/0P6A9655.webp" alt="Ảnh lễ cưới Nhà Trai" loading="lazy" />
             </div>
           </div>
 
@@ -150,7 +153,7 @@
               <i class="fas fa-map-marker-alt"></i> Xem Bản Đồ
             </a>
             <div class="invitation-time">Vào lúc 15:30</div>
-            
+
             <div class="invitation-date-display">
               <div class="invitation-date-label">Chủ Nhật</div>
               <div class="invitation-date-number">05/04</div>
@@ -165,7 +168,7 @@
         <div class="invitation-card bride-card reveal">
           <div class="invitation-image-container">
             <div class="photo-shield">
-                <img src="image/0P6A9690.webp" alt="Ảnh lễ cưới Nhà Gái" loading="lazy" />
+              <img src="image/0P6A9690.webp" alt="Ảnh lễ cưới Nhà Gái" loading="lazy" />
             </div>
           </div>
 
@@ -176,7 +179,7 @@
               <i class="fas fa-map-marker-alt"></i> Xem Bản Đồ
             </a>
             <div class="invitation-time">Vào lúc 15:00</div>
-            
+
             <div class="invitation-date-display">
               <div class="invitation-date-label">Chủ Nhật</div>
               <div class="invitation-date-number">05/04</div>
@@ -259,43 +262,64 @@
         <div class="diamond"></div>
       </div>
       <p class="rsvp-subtitle reveal">
-        Chúng tôi rất mong được gặp bạn trong ngày trọng đại này. Vui lòng xác nhận trước ngày
-        <strong>25/03/2026</strong>.
+        Chúng tôi rất mong được gặp bạn trong ngày trọng đại này.
       </p>
 
       <div class="rsvp-form reveal">
         <form id="rsvp-form" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Họ và Tên *</label>
-              <input id="name" type="text" placeholder="Nguyễn Văn A" required />
+              <label for="name"><i class="fas fa-user-heart"></i> Họ và Tên *</label>
+              <div class="input-wrapper">
+                <input id="name" type="text" required />
+                <i class="fas fa-pencil-alt input-icon"></i>
+              </div>
               <div class="error-message">Bạn quên điền tên rồi !</div>
             </div>
             <div class="form-group">
-              <label for="guests">Số người tham dự</label>
-              <select id="guests">
-                <option value="1" selected>1 người</option>
-                <option value="2">2 người</option>
-                <option value="3">3 người</option>
-                <option value="4">4 người</option>
-                <option value="5+">5 người trở lên</option>
-              </select>
+              <label for="guests"><i class="fas fa-users"></i> Số người tham dự</label>
+              <div class="custom-select" id="select-guests">
+                <div class="select-trigger">
+                  <span class="trigger-text">1 người</span>
+                  <i class="fas fa-chevron-down input-icon"></i>
+                </div>
+                <div class="select-options">
+                  <div class="option selected" data-value="1">1 người</div>
+                  <div class="option" data-value="2">2 người</div>
+                  <div class="option" data-value="3">3 người</div>
+                  <div class="option" data-value="4">4 người</div>
+                  <div class="option" data-value="5+">5 người trở lên</div>
+                </div>
+                <input type="hidden" id="guests" value="1" />
+              </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="attend">Bạn có tham dự không? *</label>
-            <select id="attend" required>
-              <option value="yes" selected>✅ Vâng, tôi sẽ tham dự</option>
-              <option value="no">😢 Rất tiếc, tôi không thể đến</option>
-              <option value="maybe">🤔 Tôi sẽ cố gắng</option>
-            </select>
+            <label for="attend"><i class="fas fa-calendar-check"></i> Bạn có tham dự không? *</label>
+            <div class="custom-select" id="select-attend">
+              <div class="select-trigger">
+                <span class="trigger-text">✅ Vâng, tôi sẽ tham dự</span>
+                <i class="fas fa-chevron-down input-icon"></i>
+              </div>
+              <div class="select-options">
+                <div class="option selected" data-value="yes">✅ Vâng, tôi sẽ tham dự</div>
+                <div class="option" data-value="no">😢 Rất tiếc, tôi không thể đến</div>
+                <div class="option" data-value="maybe">🤔 Tôi sẽ cố gắng</div>
+              </div>
+              <input type="hidden" id="attend" value="yes" required />
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="message">Lời chúc mừng</label>
-            <textarea id="message" placeholder="Gửi đến cô dâu & chú rể những lời chúc tốt đẹp nhất..."></textarea>
+            <label for="message"><i class="fas fa-envelope-open-text"></i> Lời chúc mừng</label>
+            <div class="input-wrapper">
+              <textarea id="message" placeholder="Gửi đến cô dâu & chú rể những lời chúc tốt đẹp nhất..."></textarea>
+            </div>
           </div>
-          <button type="submit" class="btn-submit">Xác Nhận Tham Dự</button>
+          <button type="submit" class="btn-submit">
+            <span>Xác Nhận Tham Dự</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
         </form>
 
         <div class="form-success" id="form-success">
@@ -315,7 +339,8 @@
   ═══════════════════════════════ -->
   <footer>
     <h2 class="footer-thanks reveal">Thank you!</h2>
-    <p class="footer-thanks-msg reveal">Sự hiện diện của bạn sẽ khiến hôn lễ của chúng tôi trở nên ý nghĩa hơn bao giờ hết!</p>
+    <p class="footer-thanks-msg reveal">Sự hiện diện của bạn sẽ khiến hôn lễ của chúng tôi trở nên ý nghĩa hơn bao giờ
+      hết!</p>
     <span class="footer-names reveal">Quang Hưng &amp; Đại Nguyên</span>
     <p class="footer-date">05 · 04 · 2026</p>
     <div class="footer-divider"></div>

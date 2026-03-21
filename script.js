@@ -181,7 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function displayWishes(wishes) {
     tickerInner.innerHTML = '';
     
-    if (wishes.length === 0) {
+    const sortedWishes = wishes
+      .filter(w => (w.message || w.text || '').trim().length > 0)
+      .reverse();
+
+    if (sortedWishes.length === 0) {
       emptyState.style.display = 'flex';
       ticker.classList.add('ticker-empty');
       return;
@@ -193,8 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollContainer = document.createElement('div');
     scrollContainer.className = 'wishes-scroll-container';
     tickerInner.appendChild(scrollContainer);
-
-    const sortedWishes = [...wishes].reverse();
     
     const renderList = (container, isClone = false) => {
       sortedWishes.forEach((wish) => {
@@ -269,6 +271,49 @@ document.addEventListener('DOMContentLoaded', () => {
     renderWishes(); 
   }
 
+
+  // ── CUSTOM SELECT DROPDOWNS ────────────────
+  const customSelects = document.querySelectorAll('.custom-select');
+
+  customSelects.forEach(select => {
+    const trigger = select.querySelector('.select-trigger');
+    const optionsList = select.querySelector('.select-options');
+    const options = select.querySelectorAll('.option');
+    const hiddenInput = select.querySelector('input[type="hidden"]');
+    const triggerText = select.querySelector('.trigger-text');
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Close other selects
+      customSelects.forEach(s => { if (s !== select) s.classList.remove('open'); });
+      select.classList.toggle('open');
+    });
+
+    options.forEach(option => {
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const val = option.dataset.value;
+        const text = option.textContent;
+
+        // Update UI
+        options.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        triggerText.textContent = text;
+        hiddenInput.value = val;
+
+        // Close
+        select.classList.remove('open');
+
+        // Trigger change event if needed
+        hiddenInput.dispatchEvent(new Event('change'));
+      });
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', () => {
+    customSelects.forEach(select => select.classList.remove('open'));
+  });
 
   // ── RSVP FORM ──────────────────────────────
   const form = document.getElementById('rsvp-form');
