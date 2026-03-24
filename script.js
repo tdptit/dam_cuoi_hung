@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── AUDIO & MUSIC CONTROL ──────────────────
   // Ưu tiên 1: File chuẩn bạn vừa thêm vào thư mục assets
-  const primaryMusic = './assets/Beautiful%20In%20White.mp3'; 
+  const primaryMusic = './assets/nhac_cuoi.mp3'; 
   const externalMusic = 'https://archive.org/download/ShaneFilanBeautifulInWhite/Shane%20Filan%20-%20Beautiful%20In%20White.mp3';
   const fallbackMusic = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'; 
   
@@ -404,12 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Tự động chuyển link nếu link hiện tại lỗi
   audio.addEventListener('error', () => {
-    if (audio.src.includes('Beautiful%20In%20White.mp3')) {
-      console.log("Không tìm thấy file trong assets, chuyển sang link Archive.org...");
+    if (audio.src.includes('nhac_cuoi.mp3')) {
+      console.log("Không tìm thấy file trong assets, chuyển sang link dự phòng...");
       audio.src = externalMusic;
       if (isPlaying) audio.play();
     } else if (audio.src === externalMusic) {
-      console.warn("Link Archive.org gặp sự cố, dùng nhạc Piano dự phòng.");
+      console.warn("Link ngoài gặp sự cố, dùng nhạc dự phòng.");
       audio.src = fallbackMusic;
       if (isPlaying) audio.play();
     }
